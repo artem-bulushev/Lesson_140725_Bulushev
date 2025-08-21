@@ -8,10 +8,6 @@ namespace Code
         public int hp;
         public MeshRenderer Renderer;
         public bool Enemy;
-        public void SetColor(Color color)
-        {
-            Renderer.material.color = color;
-        }
 
         public void Start()
         {
@@ -42,6 +38,7 @@ namespace Code
                 Debug.LogError("Ты специально?");
             }
         }
+    }
 
         private void OrientationPlayer()
         {
