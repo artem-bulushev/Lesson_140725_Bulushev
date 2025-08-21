@@ -38,7 +38,6 @@ namespace Code
                 Debug.LogError("Ты специально?");
             }
         }
-    }
 
         private void OrientationPlayer()
         {
