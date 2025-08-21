@@ -1,78 +1,58 @@
-using Code;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.EventSystems.EventTrigger;
 
-public class ConditionDeath : MonoBehaviour
+namespace Code
 {
-    // Start is called before the first frame update
-    public void Start()
+    public class ConditionDeath : MonoBehaviour
     {
-        CharacterPlayer();
-        OrientationPlayer();
-    }
-
-    // Update is called once per frame
-    public void Update()
-    {
-        
-    }
-
-    //параметры
-    public int hp;
-
-    //действия
-    private void CharacterPlayer()
-    {
-        bool isDeath;
-        if (hp > 0)
+        public int hp;
+        public MeshRenderer Renderer;
+        public bool Enemy;
+        public void SetColor(Color color)
         {
-            for (int i = hp; i >= 0; i--)
+            Renderer.material.color = color;
+        }
+
+        public void Start()
+        {
+            CharacterPlayer();
+            OrientationPlayer();
+        }
+
+        private void CharacterPlayer()
+        {
+            bool isDeath;
+            if (hp > 0)
             {
-                if (i == 0)
+                for (int i = hp; i >= 0; i--)
                 {
-                    isDeath = true;
+                    if (i == 0)
+                    {
+                        isDeath = true;
+                    }
+                    else
+                    {
+                        isDeath = false;
+                    }
+                    Debug.LogError(isDeath);
                 }
-                else
-                {
-                    isDeath = false;
-                }
-                Debug.LogError(isDeath);
+            }
+            else
+            {
+                Debug.LogError("Ты специально?");
             }
         }
-        else
+
+        private void OrientationPlayer()
         {
-            Debug.LogError("Ты специально?");
-        }
-    }
-
-    // ориентация персонажа = OrientationPlayer, цвет персонажа = ColorPlayer - задаем программно
-    // ColorPlayer = Green (серый цвет по умолчанию) - задаем в Юнити
-    // Orientation может быть Enemy (Противником) или Friend (Союзником)
-    // Если Orientation = Enemy, то ColorPlayer = Red
-    // Если Orientation = Friend, то ColorPlayer = Blue
-
-    //параметры
-    public MeshRenderer Renderer;
-    public void SetColor(Color color)
-    {
-        Renderer.material.color = color;
-    }
-    public bool Enemy;
-
-    //дествия
-    private void OrientationPlayer()
-    {
-
-        if (Enemy == true)
-        {
-            Renderer.material.color = Color.red;
-        }
-        else
-        {
-            Renderer.material.color = Color.blue;
+            if (Enemy == true)
+            {
+                Renderer.material.color = Color.red;
+            }
+            else
+            {
+                Renderer.material.color = Color.blue;
+            }
         }
     }
 }
