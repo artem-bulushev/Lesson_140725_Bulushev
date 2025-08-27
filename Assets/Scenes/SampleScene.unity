@@ -360,7 +360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 49
   Renderer: {fileID: 180175004}
-  Enemy: 0
+  Enemy: 1
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
